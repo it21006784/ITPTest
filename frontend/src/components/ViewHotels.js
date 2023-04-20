@@ -3,6 +3,7 @@ import hotelimg from "../img/hotel.jpg";
 import axios from "axios";
 import "./ViewHotel.css"
 import { Link , useLocation} from 'react-router-dom';
+import ImageSlider from "./ImageSlider"
 
 export default function ViewHotel(){
 
@@ -21,6 +22,22 @@ export default function ViewHotel(){
         getHotels();
     }, [])
   
+    const slides=[
+      {url : 'http://localhost:3000/images/AD-KFC.jpg', title: 'KFC'},
+      {url : 'http://localhost:3000/images/1681798112850-ad1.jpg', title: 'Boat'},
+      {url : 'http://localhost:3000/images/1681864619026-Ad2.jpg', title: 'Forest'},
+      {url : 'http://localhost:3000/image-4.jpg', title: 'City'},
+      {url : 'http://localhost:3000/image-5.jpg', title: 'Italy'}
+    ]
+    const containerStyles = {
+      position: "absolute",
+      zIndex: "1",
+      width: "1200px",
+      height: "200px",
+      paddingTop: "30px",
+      paddingBottom: "20px",
+      paddingLeft: "140px",
+    };
     return (
         <div className="bg">
           <div className="container">
@@ -32,6 +49,9 @@ export default function ViewHotel(){
               make it easy and convenient"
             </div>
             {image && <img src={`images/${image}`} alt="advertisement" />}
+          </div>
+          <div style={containerStyles}>
+            <ImageSlider slides={slides} />
           </div>
           <div className="newcont">
             <Link to={'/newhotel'} className="btnNew">Add your hotel</Link>
